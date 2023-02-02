@@ -1,3 +1,5 @@
+import search from "./fonction";
+
 let words = ["Hello", "world", "this", "is", "an", "array"];
 
 let wordObjects = words.map(word => ({
@@ -35,6 +37,38 @@ let bonusScores = scores
 let totalScore = bonusScores.reduce((sum, score) => sum + score, 0);
 
 console.log(totalScore);    
+
+
+let Tab = [
+    {name: "John", age: 30},
+    {name: "Jane", age: 25},
+    {name: "Jim", age: 35}
+];
+
+let lastID = 0;
+
+// Ajouter une nouvelle entrée en utilisant la méthode "push"
+Tab.push({name: "Jessica", age: 28});
+
+// Ajouter une nouvelle entrée en utilisant la méthode "unshift"
+Tab.unshift({name: "Jacob", age: 32});
+
+// Ajouter une propriété ID à chaque objet dans le tableau
+
+Tab = Tab.map((obj) => {
+    lastID += 1;
+    obj.ID = lastID;
+    return obj;
+});
+
+console.log(Tab);
+
+let result = search(2, Tab);
+console.log(result);
+
+//dernière question 
+
+
 
 
 
