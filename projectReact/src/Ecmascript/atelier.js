@@ -1,74 +1,56 @@
-import search from "./fonction";
+const findLongestWord = (tab) => {
 
-let words = ["Hello", "world", "this", "is", "an", "array"];
 
-let wordObjects = words.map(word => ({
-    mot: word,
-    longueur: word.length
-}));
-
-let longest = wordObjects.reduce((longestWord, currentWord) => {
-    return currentWord.longueur > longestWord.longueur ? currentWord : longestWord;
-});
-
-console.log(longest);
-
-let arr = [['Hello'], ['world'], ['this'], ['is'], ['an'], ['array']];
-
-let flattenArray = arr.flat();
-
-let count = flattenArray.reduce((counts, word) => {
-    if (counts[word] === undefined) {
-        counts[word] = 1;
-    } else {
-        counts[word]++;
+    let longestWord = '';
+    let longestWordLength = 0;
+    for (let i = 0; i < tab.length; i++) {
+        if (tab[i].length > longestWordLength) {
+            longestWord = `the word is : ${tab[i]} it's length is : ${tab[i].length} `;
+            longestWordLength = tab[i].length;
+        }
     }
-    return counts;
-}, {});
+    return longestWord;
 
-console.log(count);
+}
 
-let scores = [47, 68, 89, 92, 74, 53, 60];
+function occurence(tab2) {
+    //method 1
+    const newArray = tab2.flat();
+    const count = {};
 
-let bonusScores = scores
-    .map(score => score < 50 ? score + 15 : score)
-    .filter(score => score >= 50);
+    for (let i = 0; i < newArray.length; i++) {
+        let element = newArray[i];
+        if (count[element]) {
+            count[element]++;
+        } else {
+            count[element] = 1;
+        }
 
-let totalScore = bonusScores.reduce((sum, score) => sum + score, 0);
+    }
+    console.log(count);
+    return "count";
 
-console.log(totalScore);    
+    //method 2
+    //  tab2.flat().reduce((count, element) => {
+    //      count[element] = (count[element] || 0) + 1;
 
+    //      return count;
+    //  }, {});
 
-let Tab = [
-    {name: "John", age: 30},
-    {name: "Jane", age: 25},
-    {name: "Jim", age: 35}
-];
+    //  return console.log(tab2);
 
-let lastID = 0;
+}
 
-// Ajouter une nouvelle entrée en utilisant la méthode "push"
-Tab.push({name: "Jessica", age: 28});
+function totaleleve(students) {
 
-// Ajouter une nouvelle entrée en utilisant la méthode "unshift"
-Tab.unshift({name: "Jacob", age: 32});
+    const total = students
+        .map(student => (student.marks < 50 ? {...student, marks: student.marks + 15 } : student))
+        .filter(student => student.marks >= 50)
+        .reduce((total, student) => total + student.marks, 0);
 
-// Ajouter une propriété ID à chaque objet dans le tableau
-
-Tab = Tab.map((obj) => {
-    lastID += 1;
-    obj.ID = lastID;
-    return obj;
-});
-
-console.log(Tab);
-
-let result = search(2, Tab);
-console.log(result);
-
-//dernière question 
+    console.log(total);
+    return total
+}
 
 
-
-
-
+export { findLongestWord, occurence, totaleleve };
