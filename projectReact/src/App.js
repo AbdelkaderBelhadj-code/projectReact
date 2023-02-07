@@ -1,5 +1,6 @@
 import logo from './logo.svg';
-import { findLongestWord, occurence, totaleleve } from './Ecmascript/atelier'
+import { findLongestWord, occurence, totaleleve } from './Ecmascript/atelier';
+import { search } from './Ecmascript/search';
 // import occurence from './Ecmascript/function';
 import './App.css';
 
@@ -17,6 +18,27 @@ let students = [
 ]
 
 function App() {
+    let Tab = [];
+    let currentId = 0;
+  
+  // Ajoutez les données initiales dans le tableau
+    Tab.push({ name: 'John', age: 30, city: 'New York' });
+    Tab.push({ name: 'Jane', age: 25, city: 'London' });
+  
+  // Ajoutez une propriété ID à chaque objet
+    Tab.forEach(obj => obj.id = ++currentId);
+  
+  // Ajoutez de nouvelles entrées avec la méthode "push"
+    Tab.push({ name: 'Jim', age: 35, city: 'Paris' });
+  
+  // Ajoutez de nouvelles entrées avec la méthode "unshift"
+    Tab.unshift({ name: 'Anna', age: 40, city: 'Berlin' });
+  
+  // Ajoutez une propriété ID à la nouvelle entrée
+    Tab[0].id = ++currentId;
+  
+    let result = search(Tab, 2);
+    console.log(result);
     // return ( <
     //     div className = "App" >
     //     <
@@ -35,11 +57,11 @@ function App() {
     //     <
     //     /div>
     // );
-    return (
+    //return (
         //findLongestWord(tab)
-         occurence(input)
+        //occurence(input)
         //totaleleve(students)
-    )
+    //),
 }
 
 export default App;
