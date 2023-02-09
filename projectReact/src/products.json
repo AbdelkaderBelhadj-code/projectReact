@@ -1,9 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
-import Products from './components/Products';
-
-const App = () => {
-  const products = [
+[
     {
       "name": "PC Lenovo",
       "price": "1400",
@@ -28,13 +23,5 @@ const App = () => {
       "quantity":20,
       "description": "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page"
     }
-  ];
-
-  return (
-    <div>
-      <Products products={products} />
-    </div>
-  );
-};
-
-export default App;
+  ]
+  
