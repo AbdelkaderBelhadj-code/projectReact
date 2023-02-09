@@ -3,12 +3,17 @@ import Card from 'react-bootstrap/Card';
 import React from 'react';
 
 class Product extends React.Component {
-    
+    constructor(props){
+      super(props);
+      this.state=props
+      console.log(props)
+    }
 
     render() {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={this.props.image} />
+      
+      <Card.Img variant="top" src={require('../assets/images/'+this.props.image)} />
       <Card.Body>
         <Card.Title>{this.props.name}</Card.Title>
         <Card.Text>
