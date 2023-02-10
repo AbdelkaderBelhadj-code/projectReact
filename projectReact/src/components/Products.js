@@ -1,24 +1,20 @@
 import React, { Component } from "react";
+import { Col, Container , Row } from "react-bootstrap";
 import Product from "./Product";
 
 class Products extends Component {
   render() {
     const productsList = this.props.products.map((product, index) => (
+      
       <Product
         key={index}
-
-        title = {product.name}
-
-        price={product.price}
-
-        quantity={product.quantity}
-
-        likes = {product.like}
-
-        image={product.img}
+        produit = {product}
       />
+      
+      
+    
     ));
-    return <div>{productsList}</div>;
+    return <Container><Row>{productsList}</Row></Container>;
   }
 }
 
