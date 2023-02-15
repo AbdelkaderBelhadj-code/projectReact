@@ -1,29 +1,62 @@
-import Button from 'react-bootstrap/Button';
+import {Button,Alert} from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import React from 'react';
 import { Col } from 'react-bootstrap';
 
 class Product extends React.Component {
+    
     constructor(props){
+      
       super(props);
       
       //console.log(props)
-      this.state = { product:props.produit };
+      this.state = { product:props.produit , updated:0 , showAlert: false  };
       console.log(this.state.product)
       //.addLikes = this.addLikes.bind(this);
 
 
     }
+    
+
+
+    componentDisMount(){
+      console.log(
+        "I have finished rendering"+
+        this.props.product.name+
+        "The price is :"+
+        this.props.product.price
+      );
+    }
+
+    componentDidUpdate(){
+      console.log("I have been updated"+this.state.updated + "times");
+    }
+
+    //componentDidUnmount(){
+    //  console.log("I've been destroyed")
+    //}
+    
     addLikes=(e)=>{
       e.preventDefault();
       this.setState((oldState) => ({
-        product :{...oldState.product,like:oldState.product.like +1}
+        product :{...oldState.product,like:oldState.product.like +1,updated:oldState.product.updated +1}
   
          
         
       }
       ));     
+      
     }
+
+
+    handleBuyClick = () => {
+      this.setState({ showAlert: true });
+      setTimeout(() => {
+        this.setState({ showAlert: false });
+      }, 2000);
+    }
+
+    
    
 
     render() {
@@ -42,7 +75,20 @@ class Product extends React.Component {
         {this.state.product.description}
         </Card.Text>
         <Button variant="primary" className='d-flex' onClick={this.addLikes}>Like</Button>
-        <Button variant="primary" className='text-right'disabled>Hello</Button>
+        <div>
+        <Button variant="primary" className='d-grid' disabled={this.state.product.quantity === 0}  style={{ backgroundColor: "skyblue", color: "white" }} onClick={this.handleBuyClick}>
+        buy
+        </Button>
+        {this.state.showAlert &&
+          <Alert variant="success" style={{color : "blue" , backgroundColor:"skyblue"}}>
+            You bought an Item
+          </Alert>
+        }
+        </div>
+        
+        
+        
+      
       </Card.Body>
     </Card>
     </Col>
