@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React  from "react";
 import { Col, Container , Row } from "react-bootstrap";
 import Product from "./Product";
 import { Alert } from 'react-bootstrap';
@@ -6,7 +6,7 @@ import { Alert } from 'react-bootstrap';
 
 
 
-class Products extends Component {
+class Products extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showAlert: false };
