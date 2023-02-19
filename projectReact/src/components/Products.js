@@ -34,8 +34,8 @@ const Products = () => {
           <p>thank you for choosing our store, we hope you enjoy your shopping experience!</p>
         </Alert>
       )} 
-      {productComponents.map((product) => (
-        <div key={product.props.name} style={{ width: "33.33%", padding: "1em" }}>
+      {productComponents.map((product,i) => (
+        <div key={i} style={{ width: "33.33%", padding: "1em" }}>
           {product}
         </div>
       ))}
