@@ -64,8 +64,10 @@ const Product = (props) => {
             
             <div style={{ display: "flex" }}> 
             <Button variant="primary" onClick={handleLike}>
+            
             like
           </Button>
+          {isBestProduct && <p>BEST PRODUCT</p> }
           <Button variant="primary" disabled={quantity === 0} onClick={handleBuy} style={{ backgroundColor: "skyblue", color: "white" }}  >
             buy
           </Button>
