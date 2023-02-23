@@ -56,7 +56,7 @@ const Product = (props) => {
         <div>
             <img src={img} alt={props.name}  style={{ width: "200px", height: "200px", objectFit: "cover" }}/>        
             <h2>title:{props.title}</h2>
-            <p>Price: {props.price}</p>
+            <p>Price: {props.price} DT</p>
             <p>Description: {props.description}</p>  
             <p>quantity : {quantity} </p>
             
