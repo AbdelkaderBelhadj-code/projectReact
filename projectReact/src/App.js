@@ -1,21 +1,34 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Products from "./components/Products";
-import NotFound from "./components/NotFound";
 import { Route, Routes } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
+import React, { Suspense, useState } from "react";
+import {data }from "./product"
+
+const Products = React.lazy(() => import("./components/Products"));
+const ProductDetails = React.lazy(() => import("./components/ProductDetails"));
+const NotFound = React.lazy(() => import("./components/NotFound"));
 
 function App() {
+  const [product, setProduct] = useState(data);
+
   return (
-    <div className="App">
-      <div>
+    <>
+      <Suspense fallback={<p>loading 1 2 3 . . . </p>}>
         <NavigationBar />
         <Routes>
-          <Route path="/product" element={<Products />} />
+          <Route path="/">
+            <Route index element={<Products product={product} />} />
+            <Route path=":id" element={<ProductDetails product={product} />} />
+          </Route>
+          <Route path="product">
+            <Route index element={<Products product={product} />} />
+            <Route path=":id" element={<ProductDetails product={product} />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
-    </div>
+      </Suspense>
+    </>
   );
 }
 

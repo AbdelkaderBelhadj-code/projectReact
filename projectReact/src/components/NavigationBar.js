@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import products from './Products';
+import product from './Products';
 
 function NavigationBar() {
   return (
@@ -12,7 +11,7 @@ function NavigationBar() {
       <Container>
         <Navbar.Brand as={NavLink} to="/product">MyStore</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link as={NavLink} to="/product" style={({isActive})=>({textDecoration:isActive&&'underline'})}>Products</Nav.Link>
+          <Nav.Link as={NavLink} to="/product" style={({isActive})=>({textDecoration:isActive? "underline":"black"})}>Products</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

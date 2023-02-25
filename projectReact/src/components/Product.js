@@ -1,87 +1,72 @@
-import React, { useState , useEffect} from "react";
-import {Alert , Button} from "react-bootstrap";
 
-const Product = (props) => {
-    const[showWelcomeMessage,setShowWelcomeMessage] = useState(false);
-    let img = require(`../assets/images/${props.image}`);
-    const [showAlert , setShowAlert]= useState(false);
-    const [count, setCount] = useState(0);
-    const [quantity, setQuantity] = useState(props.quantity);
-    const [isBestProduct, setIsBestProduct] = useState("");
-    const [like, setLikes] = useState(0);
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import {Link} from 'react-router-dom';
+import { useState } from "react";
 
+function Product ({prod}){
+   const [product,setProduct] = useState(prod);
+const className=product.like>5?"text-center BestSeller":"text-center"
+   const  addLike = ()=>{
+    setProduct({...product,like:product.like +1});
+   }
 
-    // useEffect(() => {
-    //   const container = document.getElementById("myContainer");
-    //   if (isBestProduct) {
-    //     container.className = "bestProduct";
-    //   } else {
-    //     container.className = "";
-    //   }
-    // }, [isBestProduct]);
+   //const buyProducts = ()=>{
+   // setProduct({...product,quantity:product.quantity-1});
+   //}
+    // constructor(props){
+    //     super(props);
+    //     this.state =  {like : this.props.product.like,quantity:this.props.product.quantity, alertVisible:false};
+    //     this.addLikes = this.addLikes.bind(this);
+    //     this.buyProducts = this.buyProducts.bind(this);
+    //     this.handleVisible = this.handleVisible.bind(this);
+    // }
 
-    useEffect(()=>{
-  
-      if(count>5){setIsBestProduct("bestProduct")}
-      
-    },[count]) ;
-  
-    
+    // addLikes(){
+    //     this.setState((oldState)=>({
+    //         like : oldState.like +1
+    //     }));
+    // }
 
-    const handleLike = () => {
-        // Code pour ajouter un "J'aime" à un produit spécifique
-        setCount(count + 1);
-         if (count + 1 > 5) {
-             setIsBestProduct('k');
-           }
-        
-      };
-    const handleBuy = () => {
-        if (quantity > 0) {
-            setQuantity(quantity - 1);
-            
-          }
-        setShowAlert(true);
-        setTimeout(() => setShowAlert(false), 2000);
+    // buyProducts (){
+    //     this.setState((oldState)=>({
+    //         quantity:oldState.quantity-1
+    //     }));
+    //     this.handleVisible()
+    // }   
 
-      };
+    // handleVisible = () => { 
+    //     this.setState({alertVisible:true})
+    //     setTimeout(() => { 
+    //         this.setState({alertVisible:false})
+    //     }, 2000);
+    // } 
 
-      
-    
-    
+    // render(){
 
-      return (
-        <div className={isBestProduct}>
-         
-        <div>
-            <img src={img} alt={props.name}  style={{ width: "200px", height: "200px", objectFit: "cover" }}/>        
-            <h2>title:{props.title}</h2>
-            <p>Price: {props.price} DT</p>
-            <p>Description: {props.description}</p>  
-            <p>quantity : {quantity} </p>
-            
-            <p>Like : {count} </p>
-            
-            <div style={{ display: "flex" }}> 
-            <Button variant="primary" onClick={handleLike}>
-            
-            like
-          </Button>
-          {isBestProduct && <p>BEST PRODUCT</p> }
-          <Button variant="primary" disabled={quantity === 0} onClick={handleBuy} style={{ backgroundColor: "skyblue", color: "white" }}  >
-            buy
-          </Button>
-         
-          </div>
-          
-           
-        </div>{showAlert && (
-            <Alert variant="success" onClose={() => setShowAlert(true)} dismissible>
-           you bought an item 
-            </Alert>
-          )}
-        </div>
-      );
-    };
-
-    export default Product;
+        return (<>
+         <Row>
+            <Card style={{ width: '25rem' , minHeight:'650px',display:'flex',padding:'20px'}} className={className}>
+            <Card.Img variant="top" src={require('../assets/images/'+product.img)} />
+            <Card.Body>
+            <Link  to={`/products/${product.id}`} replace={true} ><Card.Title>{product.name}</Card.Title> </Link>
+              <Card.Text>
+                {product.description}
+              </Card.Text>
+              <Card.Text>
+                {product.price} DT
+              </Card.Text>
+              <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+              <Button variant="primary" onClick={addLike} style={{margin :'15px'}} >Like</Button> <small style={{marginRight:'25px'}}>{product.like} Likes</small>
+              {/* <Button variant="primary" onClick={this.buyProducts} disabled={this.state.quantity === 0} style={{margin :'15px'}}>Buy</Button> <small>{this.state.quantity} Products</small> */}
+              </div>
+            </Card.Body>
+            {/* <Alert variant="primary" show={this.state?.alertVisible}  >you bought an Item !!!!</Alert>     */}
+          </Card>
+          </Row>
+          </>
+        );
+    // }
+}
+export default Product;
