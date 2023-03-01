@@ -3,7 +3,7 @@ import img from "../assets/images/notfound.jfif"
  function NotFound(){
  return(
     <>
-    <img src={img} />
+    <img src={img} alt="imag" />
     </>
  )
 }

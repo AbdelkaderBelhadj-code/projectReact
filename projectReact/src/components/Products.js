@@ -3,7 +3,6 @@ import Product from "./Product";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Alert } from "react-bootstrap";
-import ProductsList from './Products';
 export default function Products({product}){
 
     const [alert,setAlert]= useState(true);

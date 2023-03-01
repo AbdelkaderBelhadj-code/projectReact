@@ -5,7 +5,7 @@
   animation: clignote 2s linear infinite;
 }
 @keyframes clignote {
-  50% {opacity: 0.5;}
+  50% {opacity: 0.1;}
 }
 
 
