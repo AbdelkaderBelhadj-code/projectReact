@@ -1,48 +1,59 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
-import { Col, Row, Card, ListGroup, ListGroupItem } from "react-bootstrap";
-import NotFound from "./NotFound";
+import React from 'react'
+import { Container, Row, Col, Card } from "react-bootstrap";
+import { useParams } from 'react-router-dom';
+import products from "../products.json";
 
-export default function ProductDetails({ product }) {
-  const params = useParams();
-  console.log(product[1]);
-  let identifiant = Number(params.id);
-  console.log(identifiant);
-  const prod = product.find((el) => el.id === identifiant);
-  console.log(prod);
-  if (prod == null) {
-    return (
-      <>
-        <NotFound />
-      </>
-    );
-  } else {
-    return (
-      <Card style={{ width: "35rem", textAlign: "center" }}>
+function ProductDetails() {
+    const {name} = useParams();
+    const product = products.find((product)=>product.name === name);
+  return (
+    <Container style={{ marginTop: "30px" }}>
         <Row>
-          <Card.Body>
-            <Col>
-              <Card.Img
-                variant="top"
-                style={{ height: "25rem" }}
-                src={require("../assets/images/" + prod.img)}
-              />
+          <Col md={4}>
+            <Card.Img
+              variant="top"
+              src={require("../assets/images/" + product.img)}
+              alt="Product Img"
+              height="300"
+            />
+          </Col>
+          <Col md={8}>
+          <Row>
+          <Col md={12}>
+            <h1>{product.name}</h1>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={12}>
+            <h5>Description</h5>
             </Col>
             <Col>
-              <Card.Title>{prod.name}</Card.Title>{" "}
+            <p style={{ marginLeft: "50px"}}>
+            {product.description}
+            </p>
             </Col>
-            <Card.Text>{prod.description}</Card.Text>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroupItem>
-              <div width="50%"></div>
-            </ListGroupItem>
-          </ListGroup>
-          <Card.Body>
-            <Link to="/">Home</Link>
-          </Card.Body>
+            </Row>
+            <Row>
+            <Col md={12}>
+            <h5>Price</h5>
+            </Col>
+            <Col>
+            <p style={{ marginLeft: "50px"}}>{product.price} DT</p>
+
+            </Col>
+            </Row>
+            <Row>
+            <Col md={12}>
+            <h5>Likes</h5>
+            </Col>
+            <Col>
+            <p style={{ marginLeft: "50px"}}>{product.like}</p>
+            </Col>
+            </Row>
+          </Col>
         </Row>
-      </Card>
-    );
-  }
+      </Container>
+  )
 }
+
+export default ProductDetails

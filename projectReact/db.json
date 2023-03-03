@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "PC Lenovo",
+      "price": "1400",
+      "img": "product1.webp",
+      "like": 0,
+      "quantity": 10,
+      "description": "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page"
+    },
+    {
+      "id": 2,
+      "name": "Mouse",
+      "price": "30",
+      "img": "product2.jpg",
+      "like": 0,
+      "quantity": 0,
+      "description": "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page"
+    },
+    {
+      "name": "cfvghjk",
+      "price": "51",
+      "img": "product3.jpg",
+      "like": 0,
+      "quantity": "5",
+      "description": "cvgbhnj",
+      "id": 3
+    },
+    {
+      "name": "",
+      "price": 0,
+      "img": ".",
+      "like": 0,
+      "quantity": 0,
+      "description": "",
+      "id": 4
+    },
+    {
+      "name": "fghjkl",
+      "price": "5",
+      "img": "product3.jpg",
+      "like": 0,
+      "quantity": "5",
+      "description": "cvb",
+      "id": 5
+    }
+  ]
+}
