@@ -4,12 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-//atelier 3
+import { applyMiddleware, createStore } from 'redux';
+import counter from './Redux/Reducers/counterReducer';
+import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
+
+import logger from 'redux-logger';
+
+// const store = createStore(counter,applyMiddleware(logger));
+import store from './ReduxToolkit/store'
+import { PersistGate } from 'redux-persist/integration/react';
+const persistor = persistStore(store)
+store.subscribe(()=>console.log(store.getState()))
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
   <BrowserRouter>
-    <App />
+   <Provider store={store} >
+   <PersistGate persistor={persistor} >
+   <App />
+   </PersistGate>
+   </Provider>
   </BrowserRouter>
   </React.StrictMode>
 );
