@@ -1,10 +1,17 @@
-import axios from 'axios'
-const url = "http://localhost:3000/products"
-
-
-export function getProducts(){
-    return axios.get(url);
+import axios from 'axios';
+const apiUrl = "http://localhost:3001/products"
+export async function getProducts(){
+    return await axios.get(apiUrl);
 }
-export async function addProduct(product){return await axios.post(url,product)}
-export async function updateProducts(id,product){return await axios.put(`${url}/${id}`,product)}
-export async function deleteProduct(id){return await axios.delete(`${url}/${id}`)}
+export async function getProduct(id){
+    return await axios.get(`${apiUrl}/${id}`);
+}
+export async function addProduct(product){
+    return await axios.post(apiUrl,product);
+}
+export async function updateProduct(id,product){
+    return await axios.put(`${apiUrl}/${id}`,product)
+}
+export async function deleteProduct(id){
+    return await axios.delete(`${apiUrl}/${id}`);
+}

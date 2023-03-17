@@ -1,18 +1,18 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import CustomNavbar from "./Components/CustomNavbar";
+import CustomNavbar from "./components/CustomNavBar";
 import ReduxComponent from "./Redux/ReduxComponent";
 import ReduxToolkitComponent from "./ReduxToolkit/ReduxComponent";
 
-const Home = lazy(() => import("./Components/Home"));
-const UpdateProduct = lazy(() => import("./Components/UpdateProduct"));
+const Home = lazy(() => import("./components/Home"));
+const UpdateProduct = lazy(() => import("./components/UpdateProduct"));
 
-const ProductDetails = lazy(() => import("./Components/ProductDetails"));
-const AddProduct = lazy(() => import("./Components/addProduct"));
-const Products = lazy(() => import("./Components/Products"));
-const ProductLayout = lazy(() => import("./Components/ProductLayout"));
-const NotFound = lazy(() => import("./Components/NotFound"));
+const ProductDetails = lazy(() => import("./components/ProductDetails"));
+const AddProduct = lazy(() => import("./components/addProduct"));
+const Products = lazy(() => import("./components/Products"));
+const ProductLayout = lazy(() => import("./components/ProductLayout"));
+const NotFound = lazy(() => import("./components/NotFound"));
 const Cart = lazy(() => import("./components/cart"));
 function App() {
   return (
